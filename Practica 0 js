@@ -1,0 +1,11 @@
+function cifrar(elemento){
+    var palabra = document.getElementsByTagName("input")[0].value;
+    var palabracodificada = btoa(palabra);
+    document.getElementById("resultado").innerHTML = palabracodificada;
+}
+
+function desifrar(elemento){
+    var palabra = document.getElementsByTagName("input")[0].value;
+    var palabra_descodificada = atob(palabra);
+    document.getElementById("resultado").innerHTML = palabra_descodificada;
+}
