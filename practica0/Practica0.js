@@ -23,7 +23,7 @@ function cifrar(){
     }
 }
 
-function desifrar(elemento){
+function descifrar(elemento){
     let textoCifrado = document.getElementById("archivoSeleccionado").files[0].name;
     const xhttp = new XMLHttpRequest();
     xhttp.open('GET',textoCifrado, true);
