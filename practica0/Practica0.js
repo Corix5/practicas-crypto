@@ -32,7 +32,7 @@ function descifrar(elemento){
         if(this.readyState == 4 && this.status == 200){
             let texto = this.responseText; 
             let textoCodificado = atob(texto);
-            exportar(textoCodificado, "Merley_D.txt");
+            exportar(textoCodificado, "Merley_C_D.txt");
         }
     }
 }
