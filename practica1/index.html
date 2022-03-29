@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Inicio Práctica 1</title>
+    <script type="text/javascript" src="./JS/funciones.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+  </head>
+  <body>
+    <input
+      id="inputFileToLoad"
+      type="file"
+      onchange="encodeImageFileAsURL();"
+    />
+    <div id="imgTest"></div>
+    <div id="imgC"></div>
+    <script>
+      function encodeImageFileAsURL() { //Esta función convierte la imagen a base 64 para convertir a cadena y despues utilizarla para cifrar
+        let filesSelected = document.getElementById("inputFileToLoad").files;
+        if (filesSelected.length > 0) {
+          let fileToLoad = filesSelected[0];
+
+          let fileReader = new FileReader();
+
+          fileReader.onload = function (fileLoadedEvent) {
+            var srcData = fileLoadedEvent.target.result; // <--- data: base64
+
+            let newImage = document.createElement("img");
+            newImage.src = srcData;
+            console.log(srcData);
+            
+            //document.getElementById("imgTest").innerHTML = newImage.outerHTML;
+            let encrypted = CryptoJS.AES.encrypt(srcData, "Secret Passphrase", {
+            mode: CryptoJS.mode.CFB,
+            }).toString(); //funcion cifrar
+            console.log(encrypted);
+            //exportar(encrypted,"imagenCifrada");
+
+            let decrypted = CryptoJS.AES.decrypt(encrypted, "Secret Passphrase", {
+            mode: CryptoJS.mode.CFB,
+            }).toString(CryptoJS.enc.Utf8); //funcion descifrar
+            console.log(decrypted);
+            //exportar(decrypted,"imagenDescifrada");
+
+            newImage = document.createElement("img");
+            newImage.src = srcData;
+            document.body.appendChild(newImage);
+
+            var image2 = document.createElement('img');
+            image2.src = 'data:image/png;base64,'+ encrypted;
+            console.log('data:image/png;base64,'+ encrypted);
+            document.body.appendChild(image2);
+
+            var image3 = document.createElement('img');
+            image3.src = decrypted;
+            console.log(decrypted);
+            document.body.appendChild(image3);
+            exportar(decrypted, "imagenD");
+          };
+          fileReader.readAsDataURL(fileToLoad);
+        }
+      }
+    </script>
+  </body>
+</html>
