@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>descifrar ECB</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script type="text/javascript" src="./JS/funciones.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+  </head>
+  <body>
+    <input
+      id="inputFileToLoad"
+      type="file"
+      onchange="DescifrarencodeImageFileAsURL();"
+    />
+    <div id="imgTest"></div>
+    <div id="imgC"></div>
+    <script>
+      function DescifrarencodeImageFileAsURL() { //Esta función convierte la imagen a base 64 para convertir a cadena y despues utilizarla para cifrar
+        let filesSelected = document.getElementById("inputFileToLoad").files;
+        if (filesSelected.length > 0) {
+          let fileToLoad = filesSelected[0];
+
+          let fileReader = new FileReader();
+
+          fileReader.onload = function (fileLoadedEvent) {
+            
+            let decrypted = CryptoJS.AES.decrypt("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", "Secret Passphrase", { //funcion descifrar
+            mode: CryptoJS.mode.ECB,
+            }).toString(CryptoJS.enc.Utf8); 
+            console.log(decrypted);
+
+            var image3 = document.createElement('img');
+            image3.src = decrypted;
+            console.log(decrypted);
+            document.body.appendChild(image3);
+            exportar(image3.src, "imagenD");
+
+          };
+          fileReader.readAsDataURL(fileToLoad);
+        }  
+      }
+
+      
+    </script>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>
