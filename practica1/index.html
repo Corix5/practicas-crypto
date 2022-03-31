@@ -5,72 +5,42 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Inicio Práctica 1</title>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="./estilos/estilos.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script type="text/javascript" src="./JS/funciones.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
   </head>
   <body>
-    <input
-      id="inputFileToLoad"
-      type="file"
-      onchange="CifrarencodeImageFileAsURL();"
-    />
-    <div id="imgTest"></div>
-    <div id="imgC"></div>
-    <script>
-      function CifrarencodeImageFileAsURL() { //Esta función convierte la imagen a base 64 para convertir a cadena y despues utilizarla para cifrar
-        let filesSelected = document.getElementById("inputFileToLoad").files;
-        if (filesSelected.length > 0) {
-          let fileToLoad = filesSelected[0];
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Práctica 1</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="./index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./cifrarCFB.html">Cifrar CFB</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./descifrarCFB.html">Descifrar CFB</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    
+    <div class="inicio">
+    <h1>Cryptography</h1>
+    <h2>Carrillo Soto Cristian Eduardo</h2>
+    <h2>Cortés Coria Luis David</h2>
+    <h2>Saldaña Arcos Hilda Guadalupe</h2>
 
-          let fileReader = new FileReader();
-
-          fileReader.onload = function (fileLoadedEvent) {
-            let srcData = fileLoadedEvent.target.result; // <--- data: base64
-
-            let newImage = document.createElement("img");
-            newImage.src = srcData;
-            console.log(srcData);
-
-            newImage = document.createElement("img");
-            newImage.src = srcData;
-            document.body.appendChild(newImage);
-            
-            let encrypted = CryptoJS.AES.encrypt(srcData, "Secret Passphrase", {
-            mode: CryptoJS.mode.CFB,
-            }).toString(); //funcion cifrar
-            console.log(encrypted);
-            
-            var image2 = document.createElement('img');
-            image2.src = 'data:image/png;base64,'+ encrypted;
-            console.log('data:image/png;base64,'+ encrypted);
-            document.body.appendChild(image2);
-            exportar(encrypted, "imagenC");
-
-          };
-          fileReader.readAsDataURL(fileToLoad);
-        }  
-      }
-
-      
-    </script> 
-
-    <script>
-      function descifrar(){
-        //let srcData = cifrar();
-        let decrypted = CryptoJS.AES.decrypt("U2FsdGVkX19JT4kk4pbaNPB1nIWAG3lpYTEOt+tekCs=", "Secret Passphrase", { //funcion descifrar
-            mode: CryptoJS.mode.CFB,
-            }).toString(CryptoJS.enc.Utf8); 
-            console.log(decrypted);
-
-            var image3 = document.createElement('img');
-            image3.src = decrypted;
-            console.log(decrypted);
-            document.body.appendChild(image3);
-            exportar(image3.src, "imagenD");
-      }
-    </script>
-
+    <img src="https://64.media.tumblr.com/b72027f08f4ed709adc7539a807e4e6b/492db45d13719f54-04/s540x810/461177ac0d036968b55d7ec4c9713efd57d80267.jpg">
+    </div>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
