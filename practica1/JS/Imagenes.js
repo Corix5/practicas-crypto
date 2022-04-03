@@ -105,7 +105,7 @@ function cifrar(pixels, numPixels, modeOp){
 	//Se pasa el cifrado a un arreglo de unicode (arreglo de pixeles) como el original
 	let encryptUni = img.transUnicode(encrypted);
 	console.log("Antes del return");
-	console.log(encryptUni);
+	console.log("uni" + encryptUni);
 
 	return encryptUni;
 }
@@ -117,35 +117,37 @@ function descifrar(pixels, numPixels, modeOp){
 	var str = img.tranString();
 	let decrypted;
 
-	console.log(str);
+	console.log("cadena imagen original" +str);
 
 
 	switch(modeOp){
 		case 0:
 			console.log("Caso 0");
 			//Se manda a cifrar el string
-			encrypted = descifrarECB(str);
+			decrypted = descifrarECB(str);
 			break;
 		case 1:
 			console.log("Caso 1");
 			//Se manda a cifrar el string
-			encrypted = descifrarCBC(str);
+			decrypted = descifrarCBC(str);
 			break;
 		case 2:
 			console.log("Caso 2");
 			//Se manda a cifrar el string
-			encrypted = descifrarCFB(str);
+			decrypted = descifrarCFB(str);
 			break;
 		case 3:
 			console.log("Caso 3");
 			//Se manda a cifrar el string
-			encrypted = descifrarOFB(str);
+			decrypted = descifrarOFB(str);
 			break;
 	}
 
 	console.log(decrypted);
 
-	let encryptUni =0;
+	let decryptUni = img.transUnicode(decrypted);
+	console.log("Antes del return");
+	console.log(decryptUni);
 
-	return encryptUni;
+	return decryptUni;
 }
