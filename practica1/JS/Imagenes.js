@@ -77,11 +77,26 @@ function cifrar(pixels, numPixels, modeOp){
 
 
 	switch(modeOp){
+		case 0:
+			console.log("Caso 0");
+			//Se manda a cifrar el string
+			encrypted = cifrarECB(str);
+			break;
+		case 1:
+			console.log("Caso 1");
+			//Se manda a cifrar el string
+			encrypted = cifrarCBC(str);
+			break;
 		case 2:
-		console.log("Caso 2");
-		//Se manda a cifrar el string
-		encrypted = cifrarCFB(str);
-		break;
+			console.log("Caso 2");
+			//Se manda a cifrar el string
+			encrypted = cifrarCFB(str);
+			break;
+		case 3:
+			console.log("Caso 3");
+			//Se manda a cifrar el string
+			encrypted = cifrarOFB(str);
+			break;
 	}
 
 	console.log(str);
@@ -106,12 +121,26 @@ function descifrar(pixels, numPixels, modeOp){
 
 
 	switch(modeOp){
+		case 0:
+			console.log("Caso 0");
+			//Se manda a cifrar el string
+			encrypted = descifrarECB(str);
+			break;
+		case 1:
+			console.log("Caso 1");
+			//Se manda a cifrar el string
+			encrypted = descifrarCBC(str);
+			break;
 		case 2:
-		console.log("Caso 2");
-		//Se descifra la cadena que corresponde a los pixeles de la imagen cifrada
-		//Como en el cifrado
-		decrypted = descifrarCFB(str);
-		break;
+			console.log("Caso 2");
+			//Se manda a cifrar el string
+			encrypted = descifrarCFB(str);
+			break;
+		case 3:
+			console.log("Caso 3");
+			//Se manda a cifrar el string
+			encrypted = descifrarOFB(str);
+			break;
 	}
 
 	console.log(decrypted);
