@@ -81,25 +81,25 @@ function cifrar(pixels, numPixels, modeOp){
 			console.log("Caso 0");
 			//Se manda a cifrar el string
 			encrypted = cifrarECB(str);
-			exportar(encrypted, "cadenaCifrada.txt");
+			exportar(encrypted, "cadenaCifradaECB.txt");
 			break;
 		case 1:
 			console.log("Caso 1");
 			//Se manda a cifrar el string
 			encrypted = cifrarCBC(str);
-			exportar(encrypted, "cadenaCifrada.txt");
+			exportar(encrypted, "cadenaCifradaCBC.txt");
 			break;
 		case 2:
 			console.log("Caso 2");
 			//Se manda a cifrar el string
 			encrypted = cifrarCFB(str);
-			exportar(encrypted, "cadenaCifrada.txt");
+			exportar(encrypted, "cadenaCifradaCFB.txt");
 			break;
 		case 3:
 			console.log("Caso 3");
 			//Se manda a cifrar el string
 			encrypted = cifrarOFB(str);
-			exportar(encrypted, "cadenaCifrada.txt");
+			exportar(encrypted, "cadenaCifradaOFB.txt");
 			break;
 	}
 

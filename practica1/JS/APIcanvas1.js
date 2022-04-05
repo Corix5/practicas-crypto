@@ -54,12 +54,57 @@ canvasObj.prototype.replace = function (arr) {
 };
 
 
-canvasObj.prototype.save = function (arr) {
+canvasObj.prototype.save1 = function (arr) {
 
 	console.log(canvasM.getImgData());
 	var link = window.document.createElement( 'a' ),
         url = canvas.toDataURL(),
-        filename = 'screenshot.jpg';
+        filename = 'image_eCBC_dCBC.bmp';
+ 
+        link.setAttribute( 'href', url );
+        link.setAttribute( 'download', filename );
+        link.style.visibility = 'hidden';
+        window.document.body.appendChild( link );
+        link.click();
+        window.document.body.removeChild( link );
+}
+
+canvasObj.prototype.save2 = function (arr) {
+
+	console.log(canvasM.getImgData());
+	var link = window.document.createElement( 'a' ),
+        url = canvas.toDataURL(),
+        filename = 'image_eCFB_dCFB.bmp';
+ 
+        link.setAttribute( 'href', url );
+        link.setAttribute( 'download', filename );
+        link.style.visibility = 'hidden';
+        window.document.body.appendChild( link );
+        link.click();
+        window.document.body.removeChild( link );
+}
+
+canvasObj.prototype.save3 = function (arr) {
+
+	console.log(canvasM.getImgData());
+	var link = window.document.createElement( 'a' ),
+        url = canvas.toDataURL(),
+        filename = 'image_eECB_dECB.bmp';
+ 
+        link.setAttribute( 'href', url );
+        link.setAttribute( 'download', filename );
+        link.style.visibility = 'hidden';
+        window.document.body.appendChild( link );
+        link.click();
+        window.document.body.removeChild( link );
+}
+
+canvasObj.prototype.save4 = function (arr) {
+
+	console.log(canvasM.getImgData());
+	var link = window.document.createElement( 'a' ),
+        url = canvas.toDataURL(),
+        filename = 'image_eOFB_dOFB.bmp';
  
         link.setAttribute( 'href', url );
         link.setAttribute( 'download', filename );
@@ -92,5 +137,22 @@ async function main(src,opc,modeOp){
 
 	let p =[];
 	p = await canvasM.replace(arr);
+
+	if(modeOp == 1){
+		canvasM.save1();
+	}
+
+	if(modeOp == 2){
+		canvasM.save2();
+	}
+
+	if(modeOp == 0){
+		canvasM.save3();
+	}
+
+	if(modeOp == 3){
+		canvasM.save4();
+	}
+	
 
 }

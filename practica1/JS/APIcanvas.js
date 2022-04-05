@@ -73,14 +73,71 @@ canvasObj.prototype.replace = function (arr) {
 };
 
 
-canvasObj.prototype.save = function (arr) {
+canvasObj.prototype.save1= function (arr) {
 
 	console.log(canvasM.getImgData());
 
 
 	var link = window.document.createElement( 'a' ),
         url = canvas.toDataURL(),
-        filename = 'screenshot.jpg';
+        filename = 'image_eCBC.bmp';
+
+        console.log(canvas.toDataURL());
+ 
+        link.setAttribute( 'href', url );
+        link.setAttribute( 'download', filename );
+        link.style.visibility = 'hidden';
+        window.document.body.appendChild( link );
+        link.click();
+        window.document.body.removeChild( link );
+}
+
+canvasObj.prototype.save2= function (arr) {
+
+	console.log(canvasM.getImgData());
+
+
+	var link = window.document.createElement( 'a' ),
+        url = canvas.toDataURL(),
+        filename = 'image_eCFB.bmp';
+
+        console.log(canvas.toDataURL());
+ 
+        link.setAttribute( 'href', url );
+        link.setAttribute( 'download', filename );
+        link.style.visibility = 'hidden';
+        window.document.body.appendChild( link );
+        link.click();
+        window.document.body.removeChild( link );
+}
+
+canvasObj.prototype.save3= function (arr) {
+
+	console.log(canvasM.getImgData());
+
+
+	var link = window.document.createElement( 'a' ),
+        url = canvas.toDataURL(),
+        filename = 'image_eECB.bmp';
+
+        console.log(canvas.toDataURL());
+ 
+        link.setAttribute( 'href', url );
+        link.setAttribute( 'download', filename );
+        link.style.visibility = 'hidden';
+        window.document.body.appendChild( link );
+        link.click();
+        window.document.body.removeChild( link );
+}
+
+canvasObj.prototype.save4= function (arr) {
+
+	console.log(canvasM.getImgData());
+
+
+	var link = window.document.createElement( 'a' ),
+        url = canvas.toDataURL(),
+        filename = 'image_eOFB.bmp';
 
         console.log(canvas.toDataURL());
  
@@ -124,6 +181,23 @@ async function main(src,opc,modeOp){
 
 	let p =[];
 	p = await canvasM.replace(arr);
+
+	if(modeOp == 1){
+		canvasM.save1();
+	}
+
+	if(modeOp == 2){
+		canvasM.save2();
+	}
+
+	if(modeOp == 0){
+		canvasM.save3();
+	}
+
+	if(modeOp == 3){
+		canvasM.save4();
+	}
+	
 
 }
 
