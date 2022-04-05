@@ -35,6 +35,26 @@ function updateSrcImg(srcData){
   document.getElementById("imgD").src=srcData;
 }
 
+function abrirArchivo(evento) {
+  let archivo = evento.target.files[0];
+
+  if(archivo){
+      let reader = new FileReader();
+
+      reader.onload = function(e){
+        let contenido = e.target.result;
+        document.getElementById("prueba").innerText = contenido;
+      }
+
+      reader.readAsText(archivo);
+  }   
+
+}
+
+window.addEventListener('load', () =>{
+document.getElementById('cadena').addEventListener('change', abrirArchivo)
+});
+
 
 
 

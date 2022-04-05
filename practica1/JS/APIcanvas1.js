@@ -85,7 +85,7 @@ async function main(src,opc,modeOp){
 
 
 	console.log("Descifrar");
-    //console.log(imageData);
+    console.log("pixels 2 " + pixels);
 	arr = mainI(pixels, numPixels, modeOp, opc);
 	await arr;
 

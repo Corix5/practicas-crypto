@@ -81,21 +81,25 @@ function cifrar(pixels, numPixels, modeOp){
 			console.log("Caso 0");
 			//Se manda a cifrar el string
 			encrypted = cifrarECB(str);
+			exportar(encrypted, "cadenaCifrada.txt");
 			break;
 		case 1:
 			console.log("Caso 1");
 			//Se manda a cifrar el string
 			encrypted = cifrarCBC(str);
+			exportar(encrypted, "cadenaCifrada.txt");
 			break;
 		case 2:
 			console.log("Caso 2");
 			//Se manda a cifrar el string
 			encrypted = cifrarCFB(str);
+			exportar(encrypted, "cadenaCifrada.txt");
 			break;
 		case 3:
 			console.log("Caso 3");
 			//Se manda a cifrar el string
 			encrypted = cifrarOFB(str);
+			exportar(encrypted, "cadenaCifrada.txt");
 			break;
 	}
 
@@ -106,6 +110,8 @@ function cifrar(pixels, numPixels, modeOp){
 	let encryptUni = img.transUnicode(encrypted);
 	console.log("Antes del return");
 	console.log("uni" + encryptUni);
+	// console.log("cifrado return" + encrypted);
+	//exportar(encryptUni, "imagenC.bmp");
 
 	return encryptUni;
 }
@@ -114,10 +120,14 @@ function cifrar(pixels, numPixels, modeOp){
 function descifrar(pixels, numPixels, modeOp){
 
 	img = new imgObj(pixels, numPixels, modeOp);
-	var str = img.tranString();
+	//var str = img.tranString();
+	
+	var str = document.getElementById("prueba").innerText;
 	let decrypted;
 
-	console.log("cadena imagen original" +str);
+
+
+	console.log("cadena imagen cifrada original " +str);
 
 
 	switch(modeOp){
@@ -135,6 +145,7 @@ function descifrar(pixels, numPixels, modeOp){
 			console.log("Caso 2");
 			//Se manda a cifrar el string
 			decrypted = descifrarCFB(str);
+			console.log("Descifrado " + decrypted);
 			break;
 		case 3:
 			console.log("Caso 3");

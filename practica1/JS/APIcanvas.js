@@ -56,7 +56,7 @@ canvasObj.prototype.replace = function (arr) {
     numPixels = pixels.length;
 
     console.log(canvasM.getImgData());
-	console.log("pixels" + pixels);
+	console.log("pixels " + pixels);
 
    for ( var i = 0; i < numPixels; i++ ) {
    		pixels[i]=arr[i];

@@ -1,13 +1,19 @@
 function cifrarCFB(result){
-	let encrypted = CryptoJS.AES.encrypt(result, "Secret Passphrase", {
+    const cryptkey = CryptoJS.enc.Utf8.parse('1234567890123456');
+	let iv = CryptoJS.enc.Hex.parse('00000000000000000000000000000000');
+	let encrypted = CryptoJS.AES.encrypt(result, cryptkey,{
+            iv:iv,
             mode: CryptoJS.mode.CFB,
             }).toString(); //funcion cifrar
-
+            console.log("cadena cifrada: " + encrypted);
     return encrypted;
 }
 
 function cifrarCBC(result){
-	let encrypted = CryptoJS.AES.encrypt(result, "Secret Passphrase", {
+    const cryptkey = CryptoJS.enc.Utf8.parse('1234567890123456');
+	let iv = CryptoJS.enc.Hex.parse('00000000000000000000000000000000');
+	let encrypted = CryptoJS.AES.encrypt(result, cryptkey, {
+        iv:iv,
             mode: CryptoJS.mode.CBC,
             }).toString(); //funcion cifrar
 
@@ -15,7 +21,10 @@ function cifrarCBC(result){
 }
 
 function cifrarECB(result){
-	let encrypted = CryptoJS.AES.encrypt(result, "Secret Passphrase", {
+    const cryptkey = CryptoJS.enc.Utf8.parse('1234567890123456');
+	let iv = CryptoJS.enc.Hex.parse('00000000000000000000000000000000');
+	let encrypted = CryptoJS.AES.encrypt(result, cryptkey, {
+        iv:iv,
             mode: CryptoJS.mode.ECB,
             }).toString(); //funcion cifrar
 
@@ -23,7 +32,10 @@ function cifrarECB(result){
 }
 
 function cifrarOFB(result){
-	let encrypted = CryptoJS.AES.encrypt(result, "Secret Passphrase", {
+    const cryptkey = CryptoJS.enc.Utf8.parse('1234567890123456');
+	let iv = CryptoJS.enc.Hex.parse('00000000000000000000000000000000');
+	let encrypted = CryptoJS.AES.encrypt(result, cryptkey, {
+        iv:iv,
             mode: CryptoJS.mode.OFB,
             }).toString(); //funcion cifrar
 
