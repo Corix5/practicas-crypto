@@ -1,6 +1,8 @@
 function descifrarCFB(encrypted){
-	const cryptkey = CryptoJS.enc.Utf8.parse('1234567890123456');
-	let iv = CryptoJS.enc.Hex.parse('00000000000000000000000000000000');
+	//const cryptkey = CryptoJS.enc.Utf8.parse('1234567890123456');
+	//let iv = CryptoJS.enc.Hex.parse('00000000000000000000000000000000');
+	let cryptkey = document.getElementById("passwordDCFB").value;
+    let iv = document.getElementById("VectorDCFB").value;
 	console.log(encrypted);
 	let decrypted = CryptoJS.AES.decrypt(encrypted, cryptkey, { //funcion descifrar
 	iv:iv,
