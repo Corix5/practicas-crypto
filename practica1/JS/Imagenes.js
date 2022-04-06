@@ -73,6 +73,7 @@ function cifrar(pixels, numPixels, modeOp){
 	img = new imgObj(pixels, numPixels, modeOp);
 	//Pasamos el arreglo de pixeles a string 
 	var str = img.tranString();
+	console.log("Cadena original: " +str);
 	let encrypted;
 
 
@@ -87,6 +88,7 @@ function cifrar(pixels, numPixels, modeOp){
 			console.log("Caso 1");
 			//Se manda a cifrar el string
 			encrypted = cifrarCBC(str);
+			console.log("Cadena cifrada CBC "+encrypted);
 			exportar(encrypted, "cadenaCifradaCBC.txt");
 			break;
 		case 2:
