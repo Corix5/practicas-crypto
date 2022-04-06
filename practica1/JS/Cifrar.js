@@ -12,8 +12,8 @@ function cifrarCFB(result){
 }
 
 function cifrarCBC(result){
-    const cryptkey = CryptoJS.enc.Utf8.parse('1234567890123456');
-	let iv = CryptoJS.enc.Hex.parse('00000000000000000000000000000000');
+    let cryptkey = document.getElementById("passwordECBC").value;
+    let iv = document.getElementById("VectorECBC").value;
 	let encrypted = CryptoJS.AES.encrypt(result, cryptkey, {
         iv:iv,
             mode: CryptoJS.mode.CBC,
@@ -23,19 +23,18 @@ function cifrarCBC(result){
 }
 
 function cifrarECB(result){
-    const cryptkey = CryptoJS.enc.Utf8.parse('1234567890123456');
-	let iv = CryptoJS.enc.Hex.parse('00000000000000000000000000000000');
+    let cryptkey = document.getElementById("passwordEECB").value;
 	let encrypted = CryptoJS.AES.encrypt(result, cryptkey, {
-        iv:iv,
             mode: CryptoJS.mode.ECB,
-            }).toString(); //funcion cifrar
+            padding: CryptoJS.pad.Pkcs7
+            }).toString();; //funcion cifrar
 
     return encrypted;
 }
 
 function cifrarOFB(result){
-    const cryptkey = CryptoJS.enc.Utf8.parse('1234567890123456');
-	let iv = CryptoJS.enc.Hex.parse('00000000000000000000000000000000');
+    let cryptkey = document.getElementById("passwordEOFB").value;
+    let iv = document.getElementById("VectorEOFB").value;
 	let encrypted = CryptoJS.AES.encrypt(result, cryptkey, {
         iv:iv,
             mode: CryptoJS.mode.OFB,
